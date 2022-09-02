@@ -1,0 +1,25 @@
+name: GitHub Classroom Workflow
+
+on: [push]
+
+permissions:
+  checks: write
+  actions: read
+  contents: read
+
+jobs:
+  build:
+    name: Autograding
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Example_checkout
+        uses: actions/checkout@master
+        with:
+          repository: GordonArscott/Testing_Files_Example
+          token: ${{secrets.API_KEY}}
+          path: tests
+
+
+      #checkout secret tests
+      - uses: education/autograding@v1
